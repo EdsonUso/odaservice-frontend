@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <title>Oracle Digital Assistant | Web SDK Demo</title>
+    <meta name="Title" content="Oracle Digital Assistant Web SDK Demos">
+    <meta name="Description" content="Oracle Digital Assistant Web SDK Demo">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="scripts/settings.js" defer></script>
+    <script src="scripts/web-sdk.js" onload="initSdk('Bots')" defer></script>
+</head>
+
+<body>
+    <main class="content">
+        <div id="vagas">
+            <h2>Vagas de Tecnologia</h2>
+
+                <ul class="vaga">
+                    <li><strong>Nome da Vaga:</strong> Desenvolvedor Front-end</li>
+                    <li><strong>Salário:</strong> R$ 6.500,00</li>
+                    <li><strong>Setor:</strong> Desenvolvimento Web</li>
+                    <li><strong>Requisitos:</strong>
+                        HTML, CSS, JavaScript;<br>
+                        Frameworks como React ou Vue.js;<br>
+                        Versionamento com Git;<br>
+                    </li>
+                    <li><strong>Nível:</strong> Pleno</li>
+                </ul>
+    
+                <ul class="vaga">
+                    <li><strong>Nome da Vaga:</strong> Analista de Dados</li>
+                    <li><strong>Salário:</strong> R$ 7.800,00</li>
+                    <li><strong>Setor:</strong> Ciência de Dados</li>
+                    <li><strong>Requisitos:</strong>
+                            SQL e ferramentas de BI (Power BI, Tableau);<br>
+                            Python para análise de dados;<br>
+                            Conhecimento em estatística;<br>
+                    </li>
+                    <li><strong>Nível:</strong> Pleno</li>
+                </ul>
+    
+                <ul class="vaga">
+                    <li><strong>Nome da Vaga:</strong> Engenheiro de Software</li>
+                    <li><strong>Salário:</strong> R$ 10.000,00</li>
+                    <li><strong>Setor:</strong> Engenharia de Software</li>
+                    <li><strong>Requisitos:</strong>
+                            Programação avançada (Java, C#, Python);<br>
+                            Arquitetura de software;<br>
+                            Metodologias ágeis;<br>
+                    </li>
+                    <li><strong>Nível:</strong> Sênior</li>
+                </ul>
+    
+                <ul class="vaga">
+                    <li><strong>Nome da Vaga:</strong> DevOps Engineer</li>
+                    <li><strong>Salário:</strong> R$ 9.200,00</li>
+                    <li><strong>Setor:</strong> Infraestrutura</li>
+                    <li><strong>Requisitos:</strong>
+                            Experiência com CI/CD;<br>
+                            Conhecimentos em Docker e Kubernetes;<br>
+                            Monitoramento e automação;<br>
+                    </li>
+                    <li><strong>Nível:</strong> Sênior</li>
+                </ul>
+        </div>
+
+        <div id="candidatos">
+            <h2>Candidatos às Vagas</h2>
+
+            <ul class="candidato">
+                <li class="id"><strong>ID:</strong> #1023</li>
+                <li class="nome"><strong>Nome:</strong> Lucas Felix</li>
+                <li><strong>Email:</strong> lucas.felix@gmail.com</li>
+                <li><strong>Telefone:</strong> (11) 98765-4321</li>
+                <li><strong>Vaga Pretendida:</strong> Desenvolvedor Front-end</li>
+                <li><strong>Competências:</strong>
+                    HTML, CSS, Bootstrap;<br>
+                    jQuery;<br>
+                    Git básico;<br>
+                </li>
+                <li class="nivel"><strong>Nível:</strong> Júnior</li>
+            </ul>
+        
+            <ul class="candidato">
+                <li class="id"><strong>ID:</strong> #1055</li>
+                <li class="nome"><strong>Nome:</strong> Renata Lima</li>
+                <li><strong>Email:</strong> renata.lima@gmail.com</li>
+                <li><strong>Telefone:</strong> (61) 99888-1122</li>
+                <li><strong>Vaga Pretendida:</strong> Desenvolvedor Front-end</li>
+                <li><strong>Competências:</strong>
+                    React básico;<br>
+                    HTML5, CSS3;<br>
+                    Figma (design e prototipação);<br>
+                </li>
+                <li class="nivel"><strong>Nível:</strong> Pleno</li>
+            </ul>
+        
+            <ul class="candidato">
+                <li class="id"><strong>ID:</strong> #1170</li>
+                <li class="nome"><strong>Nome:</strong> Julia Mendes</li>
+                <li><strong>Email:</strong> julia.mendes@gmail.com</li>
+                <li><strong>Telefone:</strong> (41) 93322-1100</li>
+                <li><strong>Vaga Pretendida:</strong> DevOps Engineer</li>
+                <li><strong>Competências:</strong>
+                    Docker básico;<br>
+                    Linux;<br>
+                    Familiaridade com pipelines simples;<br>
+                </li>
+                <li class="nivel"><strong>Nível:</strong> Pleno</li>
+            </ul>
+        
+            <ul class="candidato">
+                <li class="id"><strong>ID:</strong> #1229</li>
+                <li class="nome"><strong>Nome:</strong> João Costa</li>
+                <li><strong>Email:</strong> joaoo.costa@gmail.com</li>
+                <li><strong>Telefone:</strong> (71) 98876-3344</li>
+                <li><strong>Vaga Pretendida:</strong> DevOps Engineer</li>
+                <li><strong>Competências:</strong>
+                    Jenkins;<br>
+                    AWS (nível iniciante);<br>
+                    Scripts em Shell;<br>
+                </li>
+                <li class="nivel"><strong>Nível:</strong> Júnior</li>
+            </ul>
+        </div>
+        
+        <button>Ver candidatos</button>
+    </main>
+
+    <script>
+        const caption = document.querySelector('caption');
+        const button = document.querySelector('button');
+        const vagas = document.querySelector('#vagas');
+        const candidatos = document.querySelector('#candidatos');
+        candidatos.style.display = 'none';
+
+        let mostrarListaVagas = false;
+        button.addEventListener('click', function () {
+            mostrarListaVagas = !mostrarListaVagas;
+            if(mostrarListaVagas) {
+                vagas.style.display = 'none';
+                candidatos.style.display = 'block';
+                button.innerHTML = 'Ver vagas';
+            } else  {
+                vagas.style.display = 'block';
+                candidatos.style.display = 'none';
+                button.innerHTML = 'Ver candidatos';
+            }
+
+        });
+    </script>
+</body>
+
+</html>

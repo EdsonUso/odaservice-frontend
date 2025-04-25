@@ -1,0 +1,145 @@
+body {
+    font-family: "Oracle Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 20px auto;
+    padding: 0 20px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: #f5f4f2;
+    color: #312d2a;
+}
+
+body.dark {
+    background-color: #201e1c;
+    color: #f1fefd;
+}
+
+ul {
+    display: flex;
+}
+
+ul.vaga, ul.candidato {
+    justify-content: space-between;
+    max-width: 90%;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f9f9f9;
+}
+
+ul.candidato li.nome{
+    width: 14% !important;
+}
+
+ul.candidato li.id,
+ul.candidato li.nivel{
+    width: 7% !important;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+}
+ul.vaga li, ul.candidato li {
+    width: 17%;
+    margin-bottom: 8px;
+}
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+button{
+    margin-top: 10px;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.onoffswitch {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 90px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.onoffswitch-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid #999999;
+    border-radius: 20px;
+}
+
+.onoffswitch-inner {
+    display: flex;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.1s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+    display: block;
+    width: 50%;
+    height: 30px;
+    padding: 0;
+    line-height: 30px;
+    font-size: 14px;
+    color: #fcfbfa;
+    font-family: "Oracle Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+    content: "DARK";
+    padding-left: 10px;
+    background-color: #025e7d;
+    color: #fcfbfa;
+}
+
+.onoffswitch-inner:after {
+    content: "LIGHT";
+    padding-right: 10px;
+    background-color: #3a3631;
+    color: #dc7e6c;
+    text-align: end;
+}
+
+.onoffswitch-switch {
+    display: block;
+    width: 32px;
+    margin: -1px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 56px;
+    border: 2px solid #999999;
+    border-radius: 20px;
+    transition: all 0.1s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+    right: 0;
+}
