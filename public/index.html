@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US" class="no-js">
-
 <head>
     <meta charset="utf-8">
     <title>Oracle Digital Assistant | Web SDK Demo</title>
@@ -12,146 +11,86 @@
     <script src="scripts/settings.js" defer></script>
     <script src="scripts/web-sdk.js" onload="initSdk('Bots')" defer></script>
 </head>
-
 <body>
     <main class="content">
         <div id="vagas">
             <h2>Vagas de Tecnologia</h2>
-
-                <ul class="vaga">
-                    <li><strong>Nome da Vaga:</strong> Desenvolvedor Front-end</li>
-                    <li><strong>Salário:</strong> R$ 6.500,00</li>
-                    <li><strong>Setor:</strong> Desenvolvimento Web</li>
-                    <li><strong>Requisitos:</strong>
-                        HTML, CSS, JavaScript;<br>
-                        Frameworks como React ou Vue.js;<br>
-                        Versionamento com Git;<br>
-                    </li>
-                    <li><strong>Nível:</strong> Pleno</li>
-                </ul>
-    
-                <ul class="vaga">
-                    <li><strong>Nome da Vaga:</strong> Analista de Dados</li>
-                    <li><strong>Salário:</strong> R$ 7.800,00</li>
-                    <li><strong>Setor:</strong> Ciência de Dados</li>
-                    <li><strong>Requisitos:</strong>
-                            SQL e ferramentas de BI (Power BI, Tableau);<br>
-                            Python para análise de dados;<br>
-                            Conhecimento em estatística;<br>
-                    </li>
-                    <li><strong>Nível:</strong> Pleno</li>
-                </ul>
-    
-                <ul class="vaga">
-                    <li><strong>Nome da Vaga:</strong> Engenheiro de Software</li>
-                    <li><strong>Salário:</strong> R$ 10.000,00</li>
-                    <li><strong>Setor:</strong> Engenharia de Software</li>
-                    <li><strong>Requisitos:</strong>
-                            Programação avançada (Java, C#, Python);<br>
-                            Arquitetura de software;<br>
-                            Metodologias ágeis;<br>
-                    </li>
-                    <li><strong>Nível:</strong> Sênior</li>
-                </ul>
-    
-                <ul class="vaga">
-                    <li><strong>Nome da Vaga:</strong> DevOps Engineer</li>
-                    <li><strong>Salário:</strong> R$ 9.200,00</li>
-                    <li><strong>Setor:</strong> Infraestrutura</li>
-                    <li><strong>Requisitos:</strong>
-                            Experiência com CI/CD;<br>
-                            Conhecimentos em Docker e Kubernetes;<br>
-                            Monitoramento e automação;<br>
-                    </li>
-                    <li><strong>Nível:</strong> Sênior</li>
-                </ul>
+            <div id="lista-vagas"></div>
         </div>
-
-        <div id="candidatos">
+        <div id="candidatos" style="display: none;">
             <h2>Candidatos às Vagas</h2>
-
-            <ul class="candidato">
-                <li class="id"><strong>ID:</strong> #1023</li>
-                <li class="nome"><strong>Nome:</strong> Lucas Felix</li>
-                <li><strong>Email:</strong> lucas.felix@gmail.com</li>
-                <li><strong>Telefone:</strong> (11) 98765-4321</li>
-                <li><strong>Vaga Pretendida:</strong> Desenvolvedor Front-end</li>
-                <li><strong>Competências:</strong>
-                    HTML, CSS, Bootstrap;<br>
-                    jQuery;<br>
-                    Git básico;<br>
-                </li>
-                <li class="nivel"><strong>Nível:</strong> Júnior</li>
-            </ul>
-        
-            <ul class="candidato">
-                <li class="id"><strong>ID:</strong> #1055</li>
-                <li class="nome"><strong>Nome:</strong> Renata Lima</li>
-                <li><strong>Email:</strong> renata.lima@gmail.com</li>
-                <li><strong>Telefone:</strong> (61) 99888-1122</li>
-                <li><strong>Vaga Pretendida:</strong> Desenvolvedor Front-end</li>
-                <li><strong>Competências:</strong>
-                    React básico;<br>
-                    HTML5, CSS3;<br>
-                    Figma (design e prototipação);<br>
-                </li>
-                <li class="nivel"><strong>Nível:</strong> Pleno</li>
-            </ul>
-        
-            <ul class="candidato">
-                <li class="id"><strong>ID:</strong> #1170</li>
-                <li class="nome"><strong>Nome:</strong> Julia Mendes</li>
-                <li><strong>Email:</strong> julia.mendes@gmail.com</li>
-                <li><strong>Telefone:</strong> (41) 93322-1100</li>
-                <li><strong>Vaga Pretendida:</strong> DevOps Engineer</li>
-                <li><strong>Competências:</strong>
-                    Docker básico;<br>
-                    Linux;<br>
-                    Familiaridade com pipelines simples;<br>
-                </li>
-                <li class="nivel"><strong>Nível:</strong> Pleno</li>
-            </ul>
-        
-            <ul class="candidato">
-                <li class="id"><strong>ID:</strong> #1229</li>
-                <li class="nome"><strong>Nome:</strong> João Costa</li>
-                <li><strong>Email:</strong> joaoo.costa@gmail.com</li>
-                <li><strong>Telefone:</strong> (71) 98876-3344</li>
-                <li><strong>Vaga Pretendida:</strong> DevOps Engineer</li>
-                <li><strong>Competências:</strong>
-                    Jenkins;<br>
-                    AWS (nível iniciante);<br>
-                    Scripts em Shell;<br>
-                </li>
-                <li class="nivel"><strong>Nível:</strong> Júnior</li>
-            </ul>
+            <div id="lista-candidatos"></div>
         </div>
-        
-        <button>Ver candidatos</button>
+        <button id="toggleButton">Ver candidatos</button>
     </main>
-
     <script>
-        const caption = document.querySelector('caption');
-        const button = document.querySelector('button');
-        const vagas = document.querySelector('#vagas');
-        const candidatos = document.querySelector('#candidatos');
-        candidatos.style.display = 'none';
+        const vagasDiv = document.querySelector('#vagas');
+        const candidatosDiv = document.querySelector('#candidatos');
+        const listaVagas = document.querySelector('#lista-vagas');
+        const listaCandidatos = document.querySelector('#lista-candidatos');
+        const button = document.getElementById('toggleButton');
 
-        let mostrarListaVagas = false;
-        button.addEventListener('click', function () {
-            mostrarListaVagas = !mostrarListaVagas;
-            if(mostrarListaVagas) {
-                vagas.style.display = 'none';
-                candidatos.style.display = 'block';
+        let mostrarCandidatos = false;
+
+        button.addEventListener('click', async function () {
+            mostrarCandidatos = !mostrarCandidatos;
+            if (mostrarCandidatos) {
+                vagasDiv.style.display = 'none';
+                candidatosDiv.style.display = 'block';
                 button.innerHTML = 'Ver vagas';
-            } else  {
-                vagas.style.display = 'block';
-                candidatos.style.display = 'none';
+                listaCandidatos.innerHTML = '';
+                await carregarCandidatos();
+            } else {
+                vagasDiv.style.display = 'block';
+                candidatosDiv.style.display = 'none';
                 button.innerHTML = 'Ver candidatos';
             }
-
         });
+
+        async function carregarVagas() {
+            try {
+                const response = await fetch('http://localhost:8080/api/vagas');
+                const vagas = await response.json();
+                listaVagas.innerHTML = ''; // Clear previous vagas
+                vagas.forEach(vaga => {
+                    const ul = document.createElement('ul');
+                    ul.className = 'vaga';
+                    ul.innerHTML = `
+                        <li><strong>Nome da Vaga:</strong> ${vaga.nome}</li>
+                        <li><strong>Salário:</strong> ${vaga.salario}</li>
+                        <li><strong>Setor:</strong> ${vaga.setor}</li>
+                        <li><strong>Requisitos:</strong> ${vaga.requisitos.map(req => req.nome + ' (' + req.nivel + ')').join('<br>')}</li>
+                        <li><strong>Candidatos:</strong> ${vaga.vagaCandidatos.map(candidato => candidato.candidato.nome + ' (' + candidato.candidato.nivel + ')').join('<br>')}</li>
+                        <li><strong>Status:</strong> ${vaga.status}</li>
+                    `;
+                    listaVagas.appendChild(ul);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar vagas:', error);
+            }
+        }
+        async function carregarCandidatos() {
+            try {
+                const response = await fetch('http://localhost:8080/api/candidatos');
+                const candidatos = await response.json();
+                candidatos.forEach(candidato => {
+                    const ul = document.createElement('ul');
+                    ul.className = 'candidato';
+                    ul.innerHTML = `
+                        <li class="id"><strong>ID:</strong> ${candidato.id}</li>
+                        <li class="nome"><strong>Nome:</strong> ${candidato.nome}</li>
+                        <li><strong>Email:</strong> ${candidato.email}</li>
+                        <li><strong>Telefone:</strong> ${candidato.telefone}</li>
+                        <li><strong>Competências:</strong> ${candidato.competencias.map(comp => comp.especializacao + ' (' + comp.nivel + ')').join('<br>')}</li>
+                        <li class="nivel"><strong>Nível:</strong> ${candidato.nivel}</li>
+                    `;
+                    listaCandidatos.appendChild(ul);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar candidatos:', error);
+            }
+        }
+        carregarVagas();
     </script>
 </body>
-
 </html>
